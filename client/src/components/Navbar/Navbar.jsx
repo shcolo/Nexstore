@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsCaretDown } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BsPerson } from 'react-icons/bs'
@@ -7,8 +7,10 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 import './Navbar.css'
+import Cart from '../Cart/Cart'
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false)
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -58,13 +60,14 @@ const Navbar = () => {
             <AiOutlineSearch />
             <BsPerson />
             <AiOutlineHeart />
-            <div className="cartIcon">
+            <div className="cartIcon" onClick={()=>setOpen(!open)}>
               <FiShoppingCart />
               <span>0</span>
             </div>
           </div>
         </div>
       </div>
+      {open && <Cart/>}
     </div>
   )
 }
